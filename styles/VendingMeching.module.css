@@ -1,5 +1,29 @@
-.main h1{
+.main h1 {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 2em;
     font-weight: bold;
+
+   
+
+}
+
+.bg {background-color:#99ffe0;
+background-image:
+radial-gradient(at 5% 75%, hsla(222,70%,72%,1) 0px, transparent 50%),
+radial-gradient(at 78% 56%, hsla(246,64%,73%,1) 0px, transparent 50%),
+radial-gradient(at 43% 74%, hsla(3,77%,60%,1) 0px, transparent 50%),
+radial-gradient(at 65% 67%, hsla(64,66%,73%,1) 0px, transparent 50%),
+radial-gradient(at 17% 40%, hsla(275,83%,68%,1) 0px, transparent 50%),
+radial-gradient(at 25% 11%, hsla(335,76%,69%,1) 0px, transparent 50%),
+radial-gradient(at 23% 48%, hsla(336,62%,61%,1) 0px, transparent 50%);
+}
+
+
+
+.custom{
+    background-color:yellow;
+}
+
+.blue{
+    background-color:yellow;
 }
