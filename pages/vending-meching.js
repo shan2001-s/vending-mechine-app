@@ -16,8 +16,8 @@ const VendingMeching = () => {
     const [web3, setweb3] = useState(null)
     const [address, setAddress] = useState(null)
     const [vmContract, setVmContract] = useState(null)
-    const [purchase, setPurchase] = useState(0)
-    const [successMsg, setsuccessMsg] = useState(null)
+  
+    const [successMsg, setsuccessMsg] = useState(' ')
     const [loadBtn, setloadBtn] = useState('')
 
 
@@ -27,7 +27,7 @@ const VendingMeching = () => {
         if(vmContract) getVendingInventoryHandle();
        if(vmContract && address) getMyDonutCountHandle();
 
-},[vmContract,address,purchase]);
+},[vmContract,address]);
 
     const getVendingInventoryHandle = async () => {
         const getVending = await vmContract.methods.getVendingMachineBalance().call();
@@ -60,12 +60,35 @@ const VendingMeching = () => {
             from: address,
             value:web3.utils.toWei('2','ether') * BuydonutQty
         })
-        setsuccessMsg(`${count} Donut get Success!!`)
-        setPurchase++;
+        setsuccessMsg(`${BuydonutQty} Donut get Success!!`)
+        if(vmContract) getVendingInventoryHandle();
+       if(vmContract && address) getMyDonutCountHandle();
+       setloadBtn(".");
          
      } catch (err) {
         seterror(err.message);
      }
+
+    // try {
+        //         await vmContract.methods.purchase(buyCount).send({
+        //           from: address,
+        //           value: web3.utils.toWei('2', 'ether') * buyCount
+        
+        //         console.log("try to purchase")
+        //         await vmContract.methods.purchase(parseInt(buyCount)).send({
+        //           from: address,
+        //           value: web3.utils.toWei('2', 'ether') * buyCount,
+        //           gas: 3000000,
+        //           gasPrice: null
+        
+        //         })
+        //         setSuccessMsg(`${buyCount} donuts purchased!`)
+        
+        //         if (vmContract) getInventoryHandler()
+        //         if (vmContract && address) getMyDonutCountHandler()
+        //       } catch(err) {
+        //         setError(err.message)
+        //       }
         
     }
 
@@ -221,9 +244,9 @@ export default VendingMeching
 // import Head from 'next/head'
 // import { useState, useEffect } from 'react'
 // import Web3 from 'web3'
-// import VendingMechingContract from '../blockchain/vending'
+// import vendingMachineContract from '../blockchain/vending'
 // import 'bulma/css/bulma.css'
-// //import styles from '../styles/VendingMachine.module.css'
+// import styles from '../styles/VendingMachine.module.css'
 
 // const VendingMachine = () => {
 //     const [error, setError] = useState('')
@@ -234,7 +257,7 @@ export default VendingMeching
 //     const [web3, setWeb3] = useState(null)
 //     const [address, setAddress] = useState(null)
 //     const [vmContract, setVmContract] = useState(null)
-   
+//     const [web3, setWeb3] = useState(null)
 
 //     useEffect(() => {
 //       if (vmContract) getInventoryHandler()
@@ -256,25 +279,26 @@ export default VendingMeching
 //     }
 
 //     const buyDonutHandler = async () => {
-
+//       try {
 //         await vmContract.methods.purchase(buyCount).send({
 //           from: address,
 //           value: web3.utils.toWei('2', 'ether') * buyCount
 
-//         //console.log("try to purchase");
-//         // await vmContract.methods.purchase(parseInt(buyCount)).send({
-//         //   from: address,
-//         //   value: web3.utils.toWei('2', 'ether') * buyCount,
-//         //   gas: 3000000,
-//         //   gasPrice: null
+//         console.log("try to purchase")
+//         await vmContract.methods.purchase(parseInt(buyCount)).send({
+//           from: address,
+//           value: web3.utils.toWei('2', 'ether') * buyCount,
+//           gas: 3000000,
+//           gasPrice: null
 
-//         // })
 //         })
-    
-        
-      
+//         setSuccessMsg(`${buyCount} donuts purchased!`)
 
-      
+//         if (vmContract) getInventoryHandler()
+//         if (vmContract && address) getMyDonutCountHandler()
+//       } catch(err) {
+//         setError(err.message)
+//       }
 //     }
 
 //     const connectWalletHandler = async () => {
@@ -294,7 +318,7 @@ export default VendingMeching
             
 
 //             /* create local contract copy */
-//             const vm = VendingMechingContract(web3)
+//             const vm = vendingMachineContract(web3)
 //             setVmContract(vm)
 //           } catch(err) {
 //             setError(err.message)
@@ -306,7 +330,7 @@ export default VendingMeching
 //     }
 
 //     return (
-//         <div >
+//         <div className={styles.main}>
 //           <Head>
 //             <title>VendingMachine App</title>
 //             <meta name="description" content="A blockchain vending app" />
