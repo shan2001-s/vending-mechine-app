@@ -1,21 +1,24 @@
-First intall Next.js
-(npm i next)
+## About ##
+**Buying Donut with ETH**.\
+Next.js + solidity + Web3.js.\
+contract with Truffle
 
-Second run
-(npm run dev)
+
 
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Image ##
+![287963820_1175846342975001_7675195542214776394_n (3)](https://user-images.githubusercontent.com/90137266/175889019-b9e75857-d90b-4c38-8df6-c7381b94cb7b.jpg)
+
 ## Getting Started
+First intall Next.js 
+(npm i next)
 
-First, run the development server:
+install and exten MetaMask Wallet
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+Second run
+(npm run dev)
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
